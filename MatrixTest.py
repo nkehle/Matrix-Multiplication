@@ -10,14 +10,15 @@ import timeit
 
 # import algorithms
 import DNCMxMultiplication
+import MatrixMath
 import NaiveMxMultiplication
 import StrassenAlgorithm
 
 matplotlib.use('TkAgg')
 
 def compareTime():
-    sizes = [1024]
-    repeats = 2
+    sizes = [8,16,32,64,131]
+    repeats = 1
     avgNaive = []
     avgDNC = []
     avgStrassen = []
@@ -26,9 +27,13 @@ def compareTime():
         nCnt = 0
         dCnt = 0
         sCnt = 0
-        for j in range(1, repeats):
+        for j in range(repeats):
             A = np.random.randint(low=0, high=100, size=(size, size))
             B = np.random.randint(low=0, high=100, size=(size, size))
+
+            # error checking and padding of matrices
+            A = MatrixMath.padMatricies(A, B)[0]
+            B = MatrixMath.padMatricies(A, B)[1]
 
             # run the naive version and time
             naiveTime = timeit.timeit(lambda: NaiveMxMultiplication.MXMultiply(A, B), setup="pass", number=1)
@@ -48,7 +53,6 @@ def compareTime():
         avgStrassen.append(round(sCnt/repeats, 5))
 
     return avgNaive, avgDNC, avgStrassen
-
 
 # gather results
 res = compareTime()

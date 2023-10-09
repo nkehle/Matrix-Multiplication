@@ -43,8 +43,8 @@ def resultDims(A, B):
     return resRows, resCols
 
 def padMatricies(A, B):
-    if not (nextpowerof2(A.shape[0]) == nextpowerof2(A.shape[1])
-            == nextpowerof2(B.shape[0]) == nextpowerof2(B.shape[1])):
+    if not ((powerof2(A.shape[0])) & (powerof2(A.shape[1])) &
+            (powerof2(B.shape[0])) & (powerof2(B.shape[1]))):
 
         # error checking / padding -> find the power of 2
         hA = (A.shape[0])  # height of A
@@ -54,13 +54,17 @@ def padMatricies(A, B):
 
         # desired n that is the next power of 2 for the largest of the 4 possibilities
         n = nextpowerof2(max(hA, wA, hB, wB))
-
         # pad matrix A
         padRow = n - hA
         padCol = n - wA
-        A = np.pad(A, ((0, padRow), (0, padCol)), mode='constant', constant_values=0)
+
+        A2 = np.pad(A, ((0, padRow), (0, padCol)), mode='constant', constant_values=0)
 
         # pad matrix B
         padRow = n - hB
         padCol = n - wB
-        B = np.pad(B, ((0, padRow), (0, padCol)), mode='constant', constant_values=0)
+        B2 = np.pad(B, ((0, padRow), (0, padCol)), mode='constant', constant_values=0)
+        return A2, B2
+    else:
+        return A, B
+

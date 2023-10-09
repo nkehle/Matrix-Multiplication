@@ -11,7 +11,6 @@ def MXMultiply(A, B):
     if len(A) == 1:
         return A * B
     else:
-        MatrixMath.padMatricies(A, B)
 
         midIndex = len(A) // 2  # middle of the matrix used for submatricies
 

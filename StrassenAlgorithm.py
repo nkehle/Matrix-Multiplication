@@ -6,6 +6,7 @@
 import numpy as np
 import MatrixMath
 
+
 def MXMultiply(A, B):
     # base case
     if len(A) == 1:
@@ -40,4 +41,3 @@ def MXMultiply(A, B):
         C22 = P5 + P1 - P3 - P7
 
     return np.block([[C11, C12], [C21, C22]])
-

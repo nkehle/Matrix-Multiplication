@@ -7,14 +7,10 @@ import numpy as np
 import MatrixMath
 
 def MXMultiply(A, B):
-    if A.shape[1] != B.shape[0]:
-        raise ValueError("Matrix dimensions are not compatible for multiplication.")
 
     hA = (A.shape[0])      # height of A
     wA = (A.shape[1])      # width of A
     wB = (B.shape[1])      # width of B
-
-    MatrixMath.padMatricies(A, B)
 
     # create result matrix
     C = np.zeros((A.shape[0], B.shape[1]), dtype=int)
