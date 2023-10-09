@@ -6,7 +6,7 @@
 import numpy as np
 import MatrixMath
 
-def MXMultiplyStras(A, B):
+def MXMultiply(A, B):
     # base case
     if len(A) == 1:
         return A * B
@@ -25,13 +25,13 @@ def MXMultiplyStras(A, B):
         B21 = B[midIndex:, :midIndex]
         B22 = B[midIndex:, midIndex:]
 
-        P1 = MXMultiplyStras(A11, (B12 - B22))
-        P2 = MXMultiplyStras((A11 + A12), B22)
-        P3 = MXMultiplyStras((A21 + A22), B11)
-        P4 = MXMultiplyStras(A22, (B21 - B11))
-        P5 = MXMultiplyStras((A11 + A22), (B11 + B22))
-        P6 = MXMultiplyStras((A12 - A22), (B21 + B22))
-        P7 = MXMultiplyStras((A11 - A21), (B11 + B12))
+        P1 = MXMultiply(A11, (B12 - B22))
+        P2 = MXMultiply((A11 + A12), B22)
+        P3 = MXMultiply((A21 + A22), B11)
+        P4 = MXMultiply(A22, (B21 - B11))
+        P5 = MXMultiply((A11 + A22), (B11 + B22))
+        P6 = MXMultiply((A12 - A22), (B21 + B22))
+        P7 = MXMultiply((A11 - A21), (B11 + B12))
 
         # recursive calls for the resulting matrix
         C11 = P5 + P4 - P2 + P6

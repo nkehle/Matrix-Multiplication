@@ -6,7 +6,9 @@
 import numpy as np
 import MatrixMath
 
-def matmul(A, B):
+def MXMultiply(A, B):
+    if A.shape[1] != B.shape[0]:
+        raise ValueError("Matrix dimensions are not compatible for multiplication.")
 
     hA = (A.shape[0])      # height of A
     wA = (A.shape[1])      # width of A

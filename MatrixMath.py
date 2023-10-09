@@ -7,7 +7,23 @@ import numpy as np
 
 # TODO
 def sum(A, B):
-    return 0;
+    n1, n2 = A.shape
+    C = np.zeros_like(A)
+
+    for i in range(n1):
+        for j in range(n2):
+            C[i, j] = A[i, j] + B[i, j]
+
+    return C
+def diff(A, B):
+    n1, n2 = A.shape
+    C = np.zeros_like(A)
+
+    for i in range(n1):
+        for j in range(n2):
+            C[i, j] = A[i, j] - B[i, j]
+
+    return C
 
 def powerof2(n):
     if n <= 0:
