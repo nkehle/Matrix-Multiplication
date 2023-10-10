@@ -26,9 +26,9 @@ def MXMultiply(A, B):
         B22 = B[midIndex:, midIndex:]
 
         # recursive calls for the resulting matrix
-        C11 = MXMultiply(A11, B11) + MXMultiply(A12, B21)
-        C12 = MXMultiply(A11, B12) + MXMultiply(A12, B22)
-        C21 = MXMultiply(A21, B11) + MXMultiply(A22, B21)
-        C22 = MXMultiply(A21, B12) + MXMultiply(A22, B22)
+        C11 = MatrixMath.sum(MXMultiply(A11, B11), MXMultiply(A12, B21))
+        C12 = MatrixMath.sum(MXMultiply(A11, B12), MXMultiply(A12, B22))
+        C21 = MatrixMath.sum(MXMultiply(A21, B11), MXMultiply(A22, B21))
+        C22 = MatrixMath.sum(MXMultiply(A21, B12), MXMultiply(A22, B22))
 
     return np.block([[C11, C12], [C21, C22]])

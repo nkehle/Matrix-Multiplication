@@ -26,13 +26,13 @@ def MXMultiply(A, B):
         B21 = B[midIndex:, :midIndex]
         B22 = B[midIndex:, midIndex:]
 
-        P1 = MXMultiply(A11, (B12 - B22))
-        P2 = MXMultiply((A11 + A12), B22)
-        P3 = MXMultiply((A21 + A22), B11)
-        P4 = MXMultiply(A22, (B21 - B11))
-        P5 = MXMultiply((A11 + A22), (B11 + B22))
-        P6 = MXMultiply((A12 - A22), (B21 + B22))
-        P7 = MXMultiply((A11 - A21), (B11 + B12))
+        P1 = MXMultiply(A11, (MatrixMath.diff(B12, B22)))
+        P2 = MXMultiply(MatrixMath.sum(A11, A12), B22)
+        P3 = MXMultiply(MatrixMath.sum(A21, A22), B11)
+        P4 = MXMultiply(A22, MatrixMath.diff(B21, B11))
+        P5 = MXMultiply(MatrixMath.sum(A11, A22), MatrixMath.sum(B11, B22))
+        P6 = MXMultiply(MatrixMath.diff(A12, A22), MatrixMath.sum(B21, B22))
+        P7 = MXMultiply(MatrixMath.diff(A11, A21), MatrixMath.sum(B11, B12))
 
         # recursive calls for the resulting matrix
         C11 = P5 + P4 - P2 + P6

@@ -56,7 +56,7 @@ def compareTime(sizes):
 
 
 # gather results
-sizes = [2,4,8,16,32,64,128,256]
+sizes = [2,4,8,16 ,32,64]#,128,256]
 res = compareTime(sizes)
 
 print("Naive:    ", res[0], "\nDNC:      ", res[1], "\nStrassen: ", res[2])
