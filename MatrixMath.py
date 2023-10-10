@@ -5,7 +5,7 @@
 
 import numpy as np
 
-# TODO
+
 def sum(A, B):
     n1, n2 = A.shape
     C = np.zeros_like(A)

@@ -41,3 +41,4 @@ def MXMultiply(A, B):
         C22 = P5 + P1 - P3 - P7
 
     return np.block([[C11, C12], [C21, C22]])
+

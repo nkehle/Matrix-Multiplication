@@ -16,8 +16,8 @@ import StrassenAlgorithm
 
 matplotlib.use('TkAgg')
 
-def compareTime():
-    sizes = [8,16,32,64,131]
+
+def compareTime(sizes):
     repeats = 1
     avgNaive = []
     avgDNC = []
@@ -48,36 +48,37 @@ def compareTime():
             sCnt += strassenTime
 
         # add the averages to their respected lists
-        avgNaive.append(round(nCnt/repeats, 5))
-        avgDNC.append(round(dCnt/repeats, 5))
-        avgStrassen.append(round(sCnt/repeats, 5))
+        avgNaive.append(round(nCnt / repeats, 5))
+        avgDNC.append(round(dCnt / repeats, 5))
+        avgStrassen.append(round(sCnt / repeats, 5))
 
     return avgNaive, avgDNC, avgStrassen
 
+
 # gather results
-res = compareTime()
+sizes = [2,4,8,16,32,64,128,256]
+res = compareTime(sizes)
 
 print("Naive:    ", res[0], "\nDNC:      ", res[1], "\nStrassen: ", res[2])
 
-'''
-# plot linear
-plt.plot(res[0], res[1], label='findSecondLinear', color='blue', linestyle='-')
+# plot naive
+plt.plot(sizes, res[0], label='Naive', color='red', linestyle='-')
 
 # plot dnc
-plt.plot(res[0], res[2], label='findSecondDNC ', color='red', linestyle='--')
+plt.plot(sizes, res[1], label='Divide n Conquer', color='blue', linestyle='--')
+
+# plot strassen
+plt.plot(sizes, res[2], label='Strassens', color='green', linestyle='-.')
 
 # labels
-plt.xlabel('Length of the Array')
-plt.ylabel('Average number of comparisons')
-plt.title('Avg number of comparisons to find second largest sizes')
+plt.xlabel('Size of the Matrix NxN')
+plt.ylabel('Average time to multiply (Seconds)')
+plt.title('Average MXMultiply Time with Differnet Algorithms')
 plt.grid = True
 plt.legend()
 
 # show plotting
 plt.show()
-
-'''
-
 
 '''A = np.array([[3, 4, -2, 0, 6, -1, 4, 4],
               [2, 2, 0, 3, -3, -2, 6, -2],
