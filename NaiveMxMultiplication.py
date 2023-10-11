@@ -6,6 +6,15 @@
 import numpy as np
 import MatrixMath
 
+"""
+    MXMultiply:
+        multiplies two matricies A and B
+    Parameters:
+        parameter1 (A = matrix): operand 1
+        parameter2 (B = matrix): operand 2
+    Returns:
+        (C = matrix): product matrix
+"""
 def MXMultiply(A, B):
 
     hA = (A.shape[0])      # height of A
