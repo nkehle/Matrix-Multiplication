@@ -1,5 +1,4 @@
-Noa Kehle and Andrew Okerlund
-nkehle@calpoly.edu apokerlu@calpoly.edu
+Noa Kehle 
 CSC3-349-01 -- Fall 2023
 Lab 2
 
